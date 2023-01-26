@@ -1,0 +1,32 @@
+.response {
+  background-image: url(../img/BGsection5.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 120px;
+  padding-bottom: 180px;
+  h2 {
+    text-align: center;
+    padding-bottom: 60px;
+  }
+  &-item {
+    display: flex;
+    flex-direction: row;
+    background: #333333;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &-text {
+    padding: 48px 60px;
+    .icon-quote-left {
+      color:  #5373FD;
+    }  
+  }
+}
+@media screen and (max-width:768px) {
+  .response-item {
+    flex-direction: column;
+  }
+}

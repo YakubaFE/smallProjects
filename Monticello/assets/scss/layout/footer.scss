@@ -1,0 +1,49 @@
+.footer {
+  background: linear-gradient(243.43deg, #7E5AFF 16.9%, #55B7FF 83.27%);
+  &-bg {
+    background-image: url(../img/scott-web.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 203px 10px;
+  }
+  &-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 50%;
+      border: 1px solid #FFFFFF;
+      font-size: 40px;
+    }
+  }
+  p {
+    font-family: 'Montserrat-Regular';
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-top: 41px;
+  }
+}
+@media screen and (max-width:768px) {
+.footer-content {
+  flex-direction: column;
+  gap: 40px;
+  }
+p {
+  text-align: center;
+}
+}

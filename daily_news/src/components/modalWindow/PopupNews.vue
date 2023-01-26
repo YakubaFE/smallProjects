@@ -1,5 +1,5 @@
 <template>
-<div class="vue-modal">
+<div class="vue-modal"  @click.self="closePopup">
   <div class="vue-modal__inner">
     <div class="vue-modal__content">
       <slot></slot>
@@ -11,8 +11,7 @@
 </div>
 </template>
 
-<script>
-  
+<script> 
   export default {
     name: 'PopupNews',
     data() {
@@ -23,8 +22,7 @@
         this.$emit('closePopup')
       }
     }
-  }
-    
+  }   
 </script>
 
 <style scoped >

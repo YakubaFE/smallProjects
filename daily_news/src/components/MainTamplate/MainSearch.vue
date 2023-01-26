@@ -38,7 +38,7 @@
         :max-pages-shown="5"
         v-model="currentPage"
         :on-click="onClickHandler"
-        v-show=news
+        v-show="news.length > 1"
       >
       </vue-awesome-paginate> 
     </div>
@@ -65,7 +65,7 @@
       news: [],
       error: [],
       totalResults: 0,
-      q: useRoute().params.query,
+      q: '',
       apiSearchURL: 'https://newsapi.org/v2/everything?searchIn=title' ,
       paramsSearch: {
         pageSize: '10',

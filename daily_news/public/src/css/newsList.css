@@ -63,10 +63,18 @@
      object-fit: cover;
 }
 
+.mainNews-wrapper .mainNews-item .modal-link {
+  text-decoration: none;
+  font-family: "Cairo-Regular";
+  font-size: 18px;
+  line-height: 20px;
+}
+
 .search-form {
   position: relative;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .search input {

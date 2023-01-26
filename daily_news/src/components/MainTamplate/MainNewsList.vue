@@ -30,13 +30,13 @@
           <div  class="mainNews-item">
             <h3>{{ userModal.title }}</h3>
              <p>{{ userModal.content }}</p>
-            <a v-bind:href="userModal.url" target="_blank">See more...</a>
+            <a v-bind:href="userModal.url" class="modal-link" target="_blank">See more...</a>
             <div class="image">
               <img v-bind:src="userModal.urlToImage" alt="">
             </div>
           </div>
         </div>
-        </PopupNews>
+      </PopupNews>
     </div>
     <div class="paginate">
       <vue-awesome-paginate 

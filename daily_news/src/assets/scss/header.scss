@@ -97,6 +97,7 @@
       border: 1px solid #E1E1E1;
       border-radius: 14px;
       padding-left: 10px;
+      margin-right: 10px;
       &:hover {
         border-color: #3C3C3C;
       }
@@ -114,6 +115,10 @@
       color: #ffffff;
       text-transform: capitalize;
       text-align: center;
+      box-shadow: 9px 6px 19px 0px rgba(66, 68, 90, 1);
+      &:active {
+        box-shadow: -9px -6px 19px 0px rgba(66, 68, 90, 1);
+      }
     }
     .header-sign__up {
       position: relative;

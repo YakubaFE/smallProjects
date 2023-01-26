@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/MainTamplate/MainNewsList.vue"
 import MainNewsSearch from "@/components/MainTamplate/MainNewsSearch.vue"
+import MainSearch from "@/components/MainTamplate/MainSearch.vue"
 import Corona from "@/components/quickNews/corona.vue"
 import Ukraine from "@/components/quickNews/ukraina.vue"
 import Science from "@/components/quickNews/science.vue"
@@ -61,6 +62,12 @@ const routes = [
     name: "newsSearch",
     component: MainNewsSearch,
     props: (route) => ({ query: route.query.q})
+  },
+  {
+    path: "/search",
+    name: "Search",
+    component: MainSearch,
+   
   },
 ];
 

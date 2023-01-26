@@ -17,10 +17,22 @@
       <div v-for="item in news" :key="item.news" class="mainNews-item">
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
-        <div class="image">
+        <div class="image" @click="showPopup(item)">
           <img v-bind:src="item.urlToImage" alt="">
         </div>
       </div>
+      <PopupNews v-show ="isModalVisible"  @closePopup="closeInfoPopup" >
+        <div class="mainNews-items">
+          <div  class="mainNews-item">
+            <h3>{{ userModal.title }}</h3>
+             <p>{{ userModal.content }}</p>
+            <a v-bind:href="userModal.url" class="modal-link" target="_blank">See more...</a>
+            <div class="image">
+              <img v-bind:src="userModal.urlToImage" alt="">
+            </div>
+          </div>
+        </div>
+      </PopupNews>
     </div>
     <div class="paginate">
       <vue-awesome-paginate 
@@ -36,20 +48,23 @@
 </template>
 
 <script>
+import PopupNews from '@/components/modalWindow/PopupNews.vue'
   import axios from 'axios'
 export default {
   name: 'MainNewsList',
   components: {
+    PopupNews
   },
   data () {
     return {
+      isModalVisible: false,
+      userModal: {},
       news: null,
       error: [],
       totalResults: 0,
       q: '',
       apiURL: 'https://newsapi.org/v2/everything?sources=bbc-news',
       params: {
-        sortBy:'relevancy',
         pageSize: '10',
         apiKey: 'eebda440532d47cdb5386fc263ddb4d8',
         q: 'ukraine',
@@ -68,14 +83,24 @@ export default {
       .catch(e => {
         this.error.push(e)
       })
-     
+      window.scrollTo({
+        top: 700,
+        left: 100,
+        behavior: 'smooth'
+      });
     },
     onClickHandler (currentPage)  {
       this.page = currentPage;
       this.params.page = currentPage;
       this.newsList();
     },
-  
+    showPopup(item) {
+      this.userModal = item;
+      this.isModalVisible = !this.isModalVisible ;
+    },
+    closeInfoPopup () {
+      this.isModalVisible = false;
+    }
   },
   mounted() {
     this.newsList();

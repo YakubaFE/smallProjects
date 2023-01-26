@@ -51,6 +51,12 @@
       width: 100%;
       object-fit: cover;
     }
+    .modal-link {
+      text-decoration: none;
+      font-family: 'Cairo-Regular';
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 }
 .search {
@@ -58,6 +64,7 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 20px;
   }
     input {
       width: 300px;

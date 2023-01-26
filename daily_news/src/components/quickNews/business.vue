@@ -17,10 +17,22 @@
       <div v-for="item in news" :key="item.news" class="mainNews-item">
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
-        <div class="image">
+        <div @click="showPopup(item)" class="image">
           <img v-bind:src="item.urlToImage" alt="">
         </div>
       </div>
+      <PopupNews v-show ="isModalVisible"  @closePopup="closeInfoPopup" >
+        <div class="mainNews-items">
+          <div  class="mainNews-item">
+            <h3>{{ userModal.title }}</h3>
+             <p>{{ userModal.content }}</p>
+            <a v-bind:href="userModal.url" class="modal-link" target="_blank">See more...</a>
+            <div class="image">
+              <img v-bind:src="userModal.urlToImage" alt="">
+            </div>
+          </div>
+        </div>
+      </PopupNews>
     </div>
     <div class="paginate">
       <vue-awesome-paginate 
@@ -35,13 +47,17 @@
 </template>
 
 <script>
+  import PopupNews from '@/components/modalWindow/PopupNews.vue'
   import axios from 'axios'
   export default {
     name: 'MainNewsList',
     components: {
+      PopupNews
     },
     data () {
       return {
+        isModalVisible: false,
+        userModal: {},
         news: null,
         error: [],
         totalResults: 0,
@@ -66,7 +82,11 @@
         .catch(e => {
           this.error.push(e)
         })
-        window.scrollTo(0, 0)
+        window.scrollTo({
+        top: 700,
+        left: 100,
+        behavior: 'smooth'
+      });
       },
     
     onClickHandler (currentPage)  {
@@ -74,6 +94,13 @@
       this.params.page = currentPage;
       this.newsList();
     },
+    showPopup(item) {
+      this.userModal = item;
+      this.isModalVisible = !this.isModalVisible ;
+    },
+    closeInfoPopup () {
+      this.isModalVisible = false;
+    }
   },
   mounted() {
     this.newsList();

@@ -25,24 +25,19 @@
           </ul>
         </nav>
       </div>
-      <form 
-        class="header-log"
-        @submit="onSubmit" 
-        >
-        <div class="header-login" v-if="!formSubmitted" >
-          <input   v-model="email" type="email" placeholder="Enter your email" required>
-          <button  type="submit" value="submit" class="header-log__in" @click="submit">{{buttons.buttonName1}}</button> 
+      <form class="header-log">
+        <div class="header-login" v-if="!formSubmitted">
+          <input v-model.trim="email" type="email" placeholder="Enter your email" required>
+          <button type="submit" value="submit" class="header-log__in" @click="submit">{{buttons.buttonName1}}</button> 
         </div>
         <div class="header-log-error"> {{errorMessage}} </div>
         <button v-if="formSubmitted" type="submit" class="header-log__out" @click="offSubmit">{{buttons.buttonName2}}</button>
-      </form>
-      
+      </form>  
     </div>
   </header>
  </template>
  
 <script>
-
   export default {
    name: 'ComponentsHeader',
    components: {
@@ -86,7 +81,11 @@
       event.submit ()
     },
     submit () {
-      this.formSubmitted = true; 
+      if (this.email !== '') {
+        this.formSubmitted = true;
+      } else {
+        this.formSubmitted = false; 
+      }
     },
     offSubmit() {
       this.formSubmitted = false;  
@@ -94,18 +93,11 @@
     validateEmail(email) {
       if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
         this.errorMessage = '';
-     
       } else {
         this.errorMessage = 'Email invalid!' 
       }
     }, 
   },
-  watch: {
-    email(value){
-      this.email = value;
-      this.validateEmail(value);
-    }
-  },  
 }
  </script>
 

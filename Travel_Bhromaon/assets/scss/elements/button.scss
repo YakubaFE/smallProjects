@@ -1,0 +1,30 @@
+.button-style {
+  position: relative;
+  width: 213px;
+  height: 60px;
+  background: #5373FD;
+  color: #fff;
+  border: none;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .button-decor {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+  }
+ .text {
+    position: absolute;
+    z-index: 3;
+    font-family: 'Aleo';
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+ }
+ &:hover {
+ transform: scale(1.2);
+ }
+}
